@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shredder Live Cohost</string>
+    <string name="brand_tagline">Shred Them Beats Boy.</string>
+    <string name="brand_motto">Be Unique, Be You.</string>
+    <string name="overlay_channel_name">Beatshredder Game Overlay</string>
+    <string name="overlay_notification_title">Shredder Live Cohost Overlay Active</string>
+    <string name="overlay_notification_text">Watching gameplay &amp; talking trash hands-free</string>
+</resources>

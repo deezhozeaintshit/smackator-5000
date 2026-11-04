@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Barlow Condensed', sans-serif;
+    --font-sans: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Beatshredder Studio Color System — Near-Black, Warm Gold, Sparse Hero Plasma */
+    --bg-canvas: #09080D;
+    --bg-card: #12101B;
+    --bg-sheet: #191625;
+    --bg-inset: #0D0B14;
+
+    --text-primary: #F5F3FF;
+    --text-secondary: #B6B0CC;
+
+    --accent-gold: #F59E0B;
+    --accent-gold-hover: #FBBF24;
+    --accent-plasma: #7C3AED;
+
+    --status-success: #10B981;
+    --status-danger: #E11D48;
+
+    --border-subtle: rgba(255, 255, 255, 0.10);
+    --border-gold: rgba(245, 158, 11, 0.48);
+
+    /* Single Elevation Scale: Card vs Sheet */
+    --shadow-card: 0 8px 24px -8px rgba(0, 0, 0, 0.72), 0 1px 0 0 rgba(255, 255, 255, 0.06) inset;
+    --shadow-sheet: 0 24px 48px -12px rgba(0, 0, 0, 0.92), 0 1px 0 0 rgba(255, 255, 255, 0.10) inset;
+    --shadow-hero-plasma: 0 12px 36px -10px rgba(124, 58, 237, 0.38), 0 8px 24px -8px rgba(0, 0, 0, 0.8);
+  }
+
+  html {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-variant-numeric: tabular-nums;
+    text-wrap: balance;
+  }
+
+  .font-mono-tabular {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Enforce single stroke weight across all Lucide icons */
+  svg.lucide {
+    stroke-width: 2px;
+    flex-shrink: 0;
+  }
+}
+
+/* Fixed 4-Step Typography Scale: Display, Title, Body, Caption */
+@layer components {
+  .type-display {
+    font-family: var(--font-display);
+    font-size: clamp(1.625rem, 4.5vw, 2.25rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .type-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .type-body {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  .type-caption {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    line-height: 1.4;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Fixed Surface Elevation Hierarchy */
+  .surface-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-card);
+  }
+
+  .surface-hero {
+    background:
+      radial-gradient(120% 120% at 100% 0%, rgba(124, 58, 237, 0.20) 0%, rgba(18, 16, 27, 0) 62%),
+      linear-gradient(180deg, #161322 0%, #12101B 100%);
+    border: 1px solid var(--border-gold);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-hero-plasma);
+  }
+
+  .surface-sheet {
+    background-color: var(--bg-sheet);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-sheet);
+  }
+
+  .surface-inset {
+    background-color: var(--bg-inset);
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.75rem;
+  }
+
+  /* Physical Hardware Pad Surface */
+  .beat-pad-surface {
+    box-shadow:
+      0 4px 0 0 rgba(0, 0, 0, 0.65),
+      0 1px 0 0 rgba(255, 255, 255, 0.10) inset;
+  }
+
+  .beat-pad-surface:active,
+  .beat-pad-surface[data-active="true"] {
+    transform: translateY(2px);
+    box-shadow:
+      0 1px 0 0 rgba(0, 0, 0, 0.75),
+      0 0 20px rgba(245, 158, 11, 0.45);
+  }
+}
+
+/* Motion Architecture: Reduced Motion is the default unless user enables Full Motion */
+html:not([data-motion="full"]) *,
+html:not([data-motion="full"]) ::before,
+html:not([data-motion="full"]) ::after {
+  transition-duration: 0.01ms !important;
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+}
+
+html[data-motion="full"] .motion-interactive {
+  transition-property: transform, background-color, border-color, color, box-shadow, opacity;
+  transition-duration: 180ms;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes stageSessionEnter {
+  0% {
+    opacity: 0.82;
+    transform: translateY(6px) scale(0.992);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+html[data-motion="full"] .signature-stage-transition {
+  animation: stageSessionEnter 220ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

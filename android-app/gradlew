@@ -1,0 +1,17 @@
+#!/bin/sh
+#
+# Gradle start up script for POSIX generated for Shredder Live Cohost Android APK
+#
+APP_HOME=$( cd "${0%/*}" && pwd -P ) || exit
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+WRAPPER_JAR="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
+
+if command -v gradle >/dev/null 2>&1; then
+  exec gradle "$@"
+elif [ -f "$WRAPPER_JAR" ]; then
+  exec java $DEFAULT_JVM_OPTS -jar "$WRAPPER_JAR" "$@"
+else
+  echo "Gradle wrapper JAR not found at $WRAPPER_JAR."
+  echo "Open /android-app in Android Studio (which automatically provisions Gradle) or install gradle CLI and run: gradle assembleDebug"
+  exit 1
+fi

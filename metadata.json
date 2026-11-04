@@ -1,0 +1,6 @@
+{
+  "name": "Shredder Live Cohost",
+  "description": "Beatshredder AI live co-host for TikTok LIVE streamers with real-time Gemini Live voice, Web Audio beat board, interactive stream games, chat mod tools, and hype meter.",
+  "requestFramePermissions": ["microphone", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

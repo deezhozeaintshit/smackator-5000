@@ -1,0 +1,17 @@
+{
+  "appId": "com.beatshredder.cohost",
+  "appName": "Shredder Live Cohost",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "android": {
+    "path": "android-app",
+    "allowMixedContent": true,
+    "captureInput": true,
+    "webContentsDebuggingEnabled": true,
+    "backgroundColor": "#09080D"
+  },
+  "server": {
+    "androidScheme": "https",
+    "cleartext": true
+  }
+}

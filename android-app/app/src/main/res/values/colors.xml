@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="stage_bg">#09080D</color>
+    <color name="stage_surface">#13111C</color>
+    <color name="shredder_gold">#F59E0B</color>
+    <color name="plasma_purple">#7C3AED</color>
+    <color name="live_emerald">#10B981</color>
+    <color name="text_primary">#F5F3FF</color>
+</resources>
